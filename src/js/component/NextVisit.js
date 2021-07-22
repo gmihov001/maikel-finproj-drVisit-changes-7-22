@@ -156,7 +156,9 @@ export const NextVisit = () => {
 										{vitalList.map((vital, ind) => {
 											console.log("Detail from list", detail);
 											return (
-												<li key={ind} className="list-group-item bg-secondary text-light shadow rounded p-3">
+												<li
+													key={ind}
+													className="list-group-item bg-secondary text-light shadow rounded p-3">
 													{vital.name}
 													<span>
 														{" "}
@@ -174,7 +176,9 @@ export const NextVisit = () => {
 										{sympList.map((symp, ind) => {
 											console.log("Symp", symp);
 											return (
-												<ul key={ind} className="list-group-item bg-secondary text-light shadow rounded p-3">
+												<ul
+													key={ind}
+													className="list-group-item bg-secondary text-light shadow rounded p-3">
 													{symp.name}
 													<span>
 														{" "}
@@ -192,7 +196,9 @@ export const NextVisit = () => {
 										{medList.map((med, ind) => {
 											console.log("Med", med);
 											return (
-												<li key={ind} className="list-group-item bg-secondary text-light shadow rounded p-3">
+												<li
+													key={ind}
+													className="list-group-item bg-secondary text-light shadow rounded p-3">
 													{med.name}
 													<span>
 														{" "}
