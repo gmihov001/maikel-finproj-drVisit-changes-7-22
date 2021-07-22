@@ -2,7 +2,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			userInfo: [],
-			allUserMedications: [],
+			allUserMedications: [
+				{
+					id: 1357,
+					medicationName: "Aspirin",
+					dose: "a lot",
+					frequency: "too often",
+					reason: "for fun",
+					sideEffects: "madness and death"
+				},
+				{
+					id: 1357,
+					medicationName: "Morphine",
+					dose: "sufficient",
+					frequency: "not often enough",
+					reason: "for more fun",
+					sideEffects: "awesomness"
+				}
+			],
 
 			vitalBloodPressure: [
 				{
@@ -157,7 +174,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let newVitalList = allVitals.filter(vital => id != vital.id);
 				setStore({ allUserVitals: newVitalList });
 			},
-
+			addVisit: () => {},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
