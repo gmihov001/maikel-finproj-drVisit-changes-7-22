@@ -11,10 +11,9 @@ export const NextVisit = () => {
 	});
 
 	const { store, actions } = useContext(GlobalState);
-	const [detailList, setDetailList] = useState([]);
-	const [sympList, setsympList] = useState([]);
-	const [medList, setmedList] = useState([]);
-	const [vitalList, setvitalList] = useState([]);
+	const [sympList, setSympList] = useState([]);
+	const [medList, setMedList] = useState([]);
+	const [vitalList, setVitalList] = useState([]);
 	const [display, setDisplay] = useState(false);
 	const [showForm, setShowForm] = useState(false);
 	const [visit, setVisit] = useState([]);
@@ -26,12 +25,10 @@ export const NextVisit = () => {
 	// 	setsympList([...sympList, symptom]);
 	// };
 
-	const addDetailToVisit = detail => setDetailList([...detailList, detail]);
-
 	return (
 		<>
 			<div className="row">
-				<div className="col">PLan your next doctor visit.</div>
+				<div className="col">Plan your next doctor visit.</div>
 			</div>
 
 			<button type="button" className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
@@ -67,16 +64,30 @@ export const NextVisit = () => {
 
 							{/* <!-- symptom picker --> */}
 							<div className="form-group bg-light mb-3 p-1">
-								<label htmlFor="exampleFormControlSelect1">Vital Name</label>
-								<select
+								<input
+									type="text"
+									id="symptoms"
 									className="form-control"
-									id="exampleFormControlSelect1"
-									name="symptom"
-									onChange={() => addSymptomToDrVisit(symptom)}>
-									{store.allUserSymptoms.map((symp, ind) => {
-										return <option key={ind}>{symp.symptomName}</option>;
-									})}
-								</select>
+									onClick={() => setDisplay(!display)}
+								/>
+								<label htmlFor="exampleFormControlSelect1">Add Vitals relevant to this visit:</label>
+								{display && (
+									<div className="autoContainer">
+										{store.allUserVitals.map((vital, i) => {
+											console.log("Vital", vital);
+											return (
+												<div
+													onClick={() => setVitalList([...vitalList, vital])}
+													className="option"
+													key={i}>
+													<span className="badge badge-pill badge-primary p-3">
+														{vital.name}
+													</span>
+												</div>
+											);
+										})}
+									</div>
+								)}
 							</div>
 
 							<div className="form-outline mb-4">
@@ -98,7 +109,9 @@ export const NextVisit = () => {
 													onClick={() => addDetailToVisit(symptom)}
 													className="option"
 													key={i}>
-													<span>{symptom.symptomName}</span>
+													<span className="badge badge-pill badge-primary p-3">
+														{symptom.name}
+													</span>
 												</div>
 											);
 										})}
@@ -121,11 +134,10 @@ export const NextVisit = () => {
 										{store.allUserMedications.map((med, i) => {
 											console.log("Med", med);
 											return (
-												<div
-													onClick={() => addDetailToVisit(symptom)}
-													className="option"
-													key={i}>
-													<span>{symptom.symptomName}</span>
+												<div onClick={() => addDetailToVisit(med)} className="option" key={i}>
+													<span className="badge badge-pill badge-primary p-3">
+														{med.name}
+													</span>
 												</div>
 											);
 										})}
@@ -138,11 +150,11 @@ export const NextVisit = () => {
 								<div className="col d-flex justify-content-center">
 									{/* <!-- Checkbox --> */}
 									<div className="symp">
-										{sympList.map((symp, ind) => {
-											console.log(symp);
+										{detailList.map((detail, ind) => {
+											console.log("Detail from list", detail);
 											return (
 												<div key={ind} className="bg-secondary text-light shadow rounded p-3">
-													{symp.symptomName}
+													{detail.name}
 													<span>
 														{" "}
 														<FaWindowClose />{" "}
