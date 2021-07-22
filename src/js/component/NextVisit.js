@@ -152,23 +152,57 @@ export const NextVisit = () => {
 							<div className="row mb-4">
 								<div className="col d-flex justify-content-center">
 									{/* <!-- Checkbox --> */}
-									<div className="symp">
-										{detailList.map((detail, ind) => {
+									<ul className="list-group symp">
+										{vitalList.map((vital, ind) => {
 											console.log("Detail from list", detail);
 											return (
-												<div key={ind} className="bg-secondary text-light shadow rounded p-3">
-													{detail.name}
+												<li key={ind} className="list-group-item bg-secondary text-light shadow rounded p-3">
+													{vital.name}
 													<span>
 														{" "}
 														<FaWindowClose />{" "}
 													</span>
-												</div>
+												</li>
 											);
 										})}
-									</div>
+									</ul>
 								</div>
 
-								<div className="col">{/* <!-- Simple link --> */}</div>
+								<div className="col d-flex justify-content-center">
+									{/* <!-- Checkbox --> */}
+									<ul className="list-group symp">
+										{sympList.map((symp, ind) => {
+											console.log("Symp", symp);
+											return (
+												<ul key={ind} className="list-group-item bg-secondary text-light shadow rounded p-3">
+													{symp.name}
+													<span>
+														{" "}
+														<FaWindowClose />{" "}
+													</span>
+												</ul>
+											);
+										})}
+									</ul>
+								</div>
+
+								<div className="col d-flex justify-content-center">
+									{/* <!-- Checkbox --> */}
+									<ul className="list-group symp">
+										{medList.map((med, ind) => {
+											console.log("Med", med);
+											return (
+												<li key={ind} className="list-group-item bg-secondary text-light shadow rounded p-3">
+													{med.name}
+													<span>
+														{" "}
+														<FaWindowClose />{" "}
+													</span>
+												</li>
+											);
+										})}
+									</ul>
+								</div>
 							</div>
 
 							{/* <!-- Submit button --> */}
