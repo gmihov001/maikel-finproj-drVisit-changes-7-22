@@ -106,7 +106,7 @@ export const NextVisit = () => {
 											console.log("Symp", symptom);
 											return (
 												<div
-													onClick={() => addDetailToVisit(symptom)}
+													onClick={() => setSympList([...sympList, symptom])}
 													className="option"
 													key={i}>
 													<span className="badge badge-pill badge-primary p-3">
@@ -134,7 +134,10 @@ export const NextVisit = () => {
 										{store.allUserMedications.map((med, i) => {
 											console.log("Med", med);
 											return (
-												<div onClick={() => addDetailToVisit(med)} className="option" key={i}>
+												<div
+													onClick={() => setMedList([...medList, med])}
+													className="option"
+													key={i}>
 													<span className="badge badge-pill badge-primary p-3">
 														{med.name}
 													</span>
