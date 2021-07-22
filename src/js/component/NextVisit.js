@@ -213,7 +213,19 @@ export const NextVisit = () => {
 
 							{/* <!-- Submit button --> */}
 						</form>
-						<button className="btn btn-primary btn-block" onClick={() => setShowForm(!showForm)}>
+						<button
+							className="btn btn-primary btn-block"
+							onClick={() =>
+								actions.addVisit({
+									doctor: doctorName,
+									date: date,
+									time: time,
+									symptoms: sympList,
+									meds: medList,
+									vitals: vitalList
+								})
+							}
+							onClick={() => setShowForm(!showForm)}>
 							Save
 						</button>
 					</div>
