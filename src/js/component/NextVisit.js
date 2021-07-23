@@ -215,7 +215,7 @@ export const NextVisit = () => {
 						</form>
 						<button
 							className="btn btn-primary btn-block"
-							onClick={() =>
+							onClick={() => {
 								actions.addVisit({
 									doctor: doctorName,
 									date: date,
@@ -223,8 +223,9 @@ export const NextVisit = () => {
 									symptoms: sympList,
 									meds: medList,
 									vitals: vitalList
-								})
-							}
+								});
+								setShowForm(!showForm);
+							}}
 							onClick={() => setShowForm(!showForm)}>
 							Save
 						</button>
